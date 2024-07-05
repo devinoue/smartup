@@ -1491,19 +1491,19 @@ var sub = {
         orgs: theorgs,
       };
       msg ? (sub.cons.permissions.msg = msg) : null;
-      chrome.windows.create({
-        url: "../html/getpermissions.html",
-        /*focused:true,*/ type: "popup",
-        width: 800,
-        height: 500,
-      });
+      // chrome.windows.create({
+      //   url: "../html/getpermissions.html",
+      //   /*focused:true,*/ type: "popup",
+      //   width: 800,
+      //   height: 500,
+      // });
       return;
     };
     var checkPers = function (result) {
       if (result) {
         theFunction();
       } else {
-        getPers(thepers, theorgs);
+        // getPers(thepers, theorgs);
       }
     };
   },
@@ -5696,6 +5696,7 @@ var sub = {
     },
     tbkjx: {
       getData: function (message, sender, sendResponse) {
+        return;
         // =======================
         // let _url="tbkjx.json",
         // 	_configURL="https://quan.zimoapps.com/push/config.json"+"?"+sub.date.getTime();
@@ -5778,31 +5779,31 @@ var sub = {
       getURL: async function (message, sender, sendResponse) {
         console.log(message);
         try {
-          let response = await fetch(
-            (config.apps.shorturl.n_suyourls
-              ? "https://url.zimoapps.com/yourls-api.php"
-              : config.apps.shorturl.n_yourls + "/yourls-api.php") +
-              "?action=shorturl" +
-              "&format=json" +
-              "&keyword=" +
-              message.value.key +
-              "&url=" +
-              encodeURIComponent(sender.url) +
-              "&signature=" +
-              (config.apps.shorturl.n_suyourls
-                ? "ab279117c0"
-                : config.apps.shorturl.n_sign),
-            {
-              method: "POST",
-            },
-          );
-          let data = await response.json();
-          console.log(data);
-          chrome.tabs.sendMessage(sender.tab.id, {
-            type: "url",
-            app: "shorturl",
-            value: data,
-          });
+          // let response = await fetch(
+          //   (config.apps.shorturl.n_suyourls
+          //     ? "https://url.zimoapps.com/yourls-api.php"
+          //     : config.apps.shorturl.n_yourls + "/yourls-api.php") +
+          //     "?action=shorturl" +
+          //     "&format=json" +
+          //     "&keyword=" +
+          //     message.value.key +
+          //     "&url=" +
+          //     encodeURIComponent(sender.url) +
+          //     "&signature=" +
+          //     (config.apps.shorturl.n_suyourls
+          //       ? "ab279117c0"
+          //       : config.apps.shorturl.n_sign),
+          //   {
+          //     method: "POST",
+          //   },
+          // );
+          // let data = await response.json();
+          // console.log(data);
+          // chrome.tabs.sendMessage(sender.tab.id, {
+          //   type: "url",
+          //   app: "shorturl",
+          //   value: data,
+          // });
         } catch (e) {
           console.log(e.toString());
           chrome.tabs.sendMessage(sender.tab.id, {
@@ -6055,7 +6056,7 @@ if (!chrome.runtime.onInstalled) {
               }
             };
             xhr.open("GET", "../change.log", true);
-            xhr.send();
+            // xhr.send();
           }
         });
         break;
